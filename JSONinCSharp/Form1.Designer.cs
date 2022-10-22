@@ -30,7 +30,9 @@
         {
             this.txtNomes = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.dtExibe = new System.Windows.Forms.DataGridView();
             this.txtList = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dtExibe)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNomes
@@ -50,13 +52,23 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.txtAdd_Click);
             // 
+            // dtExibe
+            // 
+            this.dtExibe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtExibe.Location = new System.Drawing.Point(75, 231);
+            this.dtExibe.Name = "dtExibe";
+            this.dtExibe.RowHeadersWidth = 51;
+            this.dtExibe.RowTemplate.Height = 29;
+            this.dtExibe.Size = new System.Drawing.Size(300, 188);
+            this.dtExibe.TabIndex = 2;
+            // 
             // txtList
             // 
-            this.txtList.Location = new System.Drawing.Point(85, 228);
+            this.txtList.Location = new System.Drawing.Point(427, 231);
             this.txtList.Multiline = true;
             this.txtList.Name = "txtList";
-            this.txtList.Size = new System.Drawing.Size(384, 140);
-            this.txtList.TabIndex = 2;
+            this.txtList.Size = new System.Drawing.Size(280, 188);
+            this.txtList.TabIndex = 3;
             // 
             // Form1
             // 
@@ -64,10 +76,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txtList);
+            this.Controls.Add(this.dtExibe);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtNomes);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dtExibe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -77,6 +92,7 @@
 
         private TextBox txtNomes;
         private Button btnAdd;
+        private DataGridView dtExibe;
         private TextBox txtList;
     }
 }

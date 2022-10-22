@@ -7,11 +7,24 @@ namespace JSONinCSharp
             InitializeComponent();
         }
 
+        List<Nomes> listaNomes = new List<Nomes>(); 
+
         private void txtAdd_Click(object sender, EventArgs e)
         {
             var Nomes = new Nomes();
             Nomes.NomeCompleto = txtNomes.Text;
+            listaNomes.Add(Nomes);
 
+            if (Nomes.JsonSerializarLista(listaNomes, @"C:\Users\Eduardo9\source\repos\JSONinCSharp\lista.json"))
+            {
+                MessageBox.Show("Save");
+            }
+
+            listaNomes = Nomes.JsonDesserializarLista(@"C:\Users\Eduardo9\source\repos\JSONinCSharp\lista.json");
+            dtExibe.DataSource = listaNomes;
+            txtList.Text = (listaNomes);
+            #region old code
+            /*
             try
             {
                 using(StreamWriter sw = new StreamWriter(@"C:\Users\Eduardo9\source\repos\JSONinCSharp\lista.json"))
@@ -34,7 +47,8 @@ namespace JSONinCSharp
                 
                 }
                 var nome = Nomes.JsonDesserializar(strJson);
-                    txtList.Text = Nomes.NomeCompleto;
+                dtExibe.DataSource = null;
+                dtExibe.DataSource = listaNomes;
                 txtNomes.Text = "";
 
 
@@ -43,6 +57,15 @@ namespace JSONinCSharp
             {
                 MessageBox.Show("Fail" + ex.Message);
             }
+            */
+            #endregion
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            listaNomes = Nomes.JsonDesserializarLista(@"C:\Users\Eduardo9\source\repos\JSONinCSharp\lista.json");
+            dtExibe.DataSource = listaNomes;
+           
         }
     }
 }
